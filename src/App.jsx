@@ -3,6 +3,7 @@ import Navbar from './components/Navbar'
 import Home from './components/Home'
 import MusicPlayer from './components/MusicPlayer'
 import Footer from './components/Footer'
+import { Link } from 'react-router-dom'
 
 const App = () => {
   return (
@@ -12,6 +13,16 @@ const App = () => {
       <Home />
       <br />
       <MusicPlayer />
+      <br />
+
+      <h1 className='text-2xl'>* Blogs</h1>
+      <br />
+      <ul>
+        <li className='my-2 text-xl'>* <Link to="/blog/template"> Template blog </Link></li>
+      </ul>
+
+
+
 
       <Footer/>
     </div>

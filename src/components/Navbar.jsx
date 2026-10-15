@@ -1,27 +1,28 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
     return (
-        <div className="text-2xl flex items-center justify-between">
+        <nav className="text-2xl flex items-center justify-between">
             <h1 className="">
-                <a href="/">
+                <Link to="/">
                     sansnow
-                </a>
+                </Link>
             </h1>
 
             <ul className="flex gap-4 items-center ">
                 <li>
-                    <a href="/blog" className="text-cyan-400">
+                    <Link to="/blog" className="text-cyan-400">
                         [ BLOG ]
-                    </a>
+                    </Link>
                 </li>
                 <li>
-                    <a href="/about" className="text-yellow-400">
+                    <Link to="/about" className="text-yellow-400">
                         [ ABOUT ]
-                    </a>
+                    </Link>
                 </li>
             </ul>
-        </div>
+        </nav>
     );
 };
 

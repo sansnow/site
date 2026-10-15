@@ -120,10 +120,9 @@ const Home = () => {
                     </div>
                 </div>
             </div>
-
             <div className='w-full h-full py-10 px-6'>
                 <div className="relative w-full h-full text-xl tracking-wider flex flex-col justify-between">
-                    <div>
+                    <div className=''>
                         <h1>
                             Hi there !!
                         </h1>
@@ -139,7 +138,7 @@ const Home = () => {
 
 
                     <br />
-                    <div className='w-full flex justify-between '>
+                    <div className='w-full flex justify-between mt-7'>
 
                         <h1 className='text-2xl '>
                             <a target='_blank' href="https://github.com/sansnow" className='text-green-500'> <pre>[ GITHUB ]</pre></a>
