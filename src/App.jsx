@@ -20,11 +20,7 @@ const App = () => {
       <ul>
         <li className='my-2 text-xl'>* <Link to="/blog/template"> Template blog </Link></li>
       </ul>
-
-
-
-
-      <Footer/>
+      <Footer />
     </div>
   )
 }
