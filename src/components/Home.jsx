@@ -111,7 +111,7 @@ const Home = () => {
     return (
         <div className='h-[60vh] w-full relative flex items-center'>
             <div className='max-w-1/2 md:w-1/2 h-full flex items-center'>
-                <div className='h-full flex flex-col items-center '>
+                <div className='h-full w-full flex flex-col items-center '>
                     <pre className='w-fit opacity-80 '>
                         {selected_ascii_obj.ascii}
                     </pre>
@@ -122,15 +122,31 @@ const Home = () => {
             </div>
 
             <div className='w-full h-full py-10 px-6'>
-                <div className=" w-full h-full text-xl tracking-wider">
-                    <h1>
-                        Hi there !! 
-                    </h1>
-                    <br />
+                <div className="relative w-full h-full text-xl tracking-wider flex flex-col justify-between">
+                    <div>
+                        <h1>
+                            Hi there !!
+                        </h1>
+                        <br />
+                        <h1>
+                            i am sansnow, a huge undertale fan and i sometimes program stuff.
+                        </h1>
 
-                    <h1>
-                        i am sansnow, a huge undertale fan and i sometimes program stuff.
-                    </h1>
+                        <br />
+                        <br />
+                        <h3 className='text-sm opacity-70 '>btw, if you haven't guessed, this site's ui is inspired by <a href="https://undertale.com/" className='underline'>undertale</a> .</h3>
+                    </div>
+
+
+                    <br />
+                    <div className='w-full flex justify-between '>
+
+                        <h1 className='text-2xl '>
+                            <a target='_blank' href="https://github.com/sansnow" className='text-green-500'> <pre>[ GITHUB ]</pre></a>
+
+                        </h1>
+                        <img src="/walking_dog.gif" className='w-40 h-40 ' alt="" />
+                    </div>
                 </div>
             </div>
 
