@@ -109,7 +109,7 @@ const Home = () => {
     const mergestring = (s1, s2) => (s1 + " " + s2);
 
     return (
-        <div className='h-[60vh] w-full relative flex items-center'>
+        <div className='min-h-[60vh] w-full relative flex items-center'>
             <div className='max-w-1/2 md:w-1/2 h-full flex items-center'>
                 <div className='h-full w-full flex flex-col items-center '>
                     <pre className='w-fit opacity-80 '>

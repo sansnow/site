@@ -1,6 +1,7 @@
 import React from 'react'
 import Navbar from './components/Navbar'
 import Home from './components/Home'
+import MusicPlayer from './components/MusicPlayer'
 
 const App = () => {
   return (
@@ -8,6 +9,8 @@ const App = () => {
       <Navbar />
 
       <Home />
+      <br />
+      <MusicPlayer />
     </div>
   )
 }
