@@ -91,6 +91,7 @@ const MusicPlayer = () => {
             audio.pause();
         }
     };
+    const mergestring = (s1, s2) => (s1 + " " + s2);
 
     const updateMusicState = (num, autoplay = false) => {
         setCurrentSongIndex(num);
@@ -143,7 +144,7 @@ const MusicPlayer = () => {
 
     return (
         <div className='my-5'>
-            <h1 className='text-2xl'>* a silly little music player</h1>
+            <h1 className='text-2xl'>* A silly music player</h1>
             <br />
             <h2 className='tracking-wider'>never heard of undertale before?? i bet you did <br /> but just don't know it was undertale.</h2>
 
@@ -179,7 +180,7 @@ const MusicPlayer = () => {
 
                         {
                             osts.map((ost, idx) => (
-                                <li key={idx} onClick={() => playThisSong(idx)} className='text-2xl cursor-pointer '>* {ost.fileName}</li>
+                                <li key={idx} onClick={() => playThisSong(idx)} className={mergestring('text-2xl cursor-pointer ', ost.fileName == currentFileName ? "bg-red-700" : "")}>* {ost.fileName}</li>
                             ))
                         }
                     </ul>

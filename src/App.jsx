@@ -2,6 +2,7 @@ import React from 'react'
 import Navbar from './components/Navbar'
 import Home from './components/Home'
 import MusicPlayer from './components/MusicPlayer'
+import Footer from './components/Footer'
 
 const App = () => {
   return (
@@ -11,6 +12,8 @@ const App = () => {
       <Home />
       <br />
       <MusicPlayer />
+
+      <Footer/>
     </div>
   )
 }
