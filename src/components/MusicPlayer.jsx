@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 
 const MusicPlayer = () => {
     const osts = [
@@ -76,22 +76,28 @@ const MusicPlayer = () => {
     const playPauseBtn = useRef();
     const [isPlaying, setIsPlaying] = useState(false);
 
-    const PlayPauseMusic = () => {
-        if (isPlaying) {
-            audioTagRef.current.pause();
-        }
-        else {
-            audioTagRef.current.play();
-        }
-        setIsPlaying(!isPlaying);
-    }
+    const PlayPauseMusic = async () => {
+        const audio = audioTagRef.current;
 
-    const updateMusicState = (num) => {
+        if (!audio) return;
+
+        if (audio.paused) {
+            try {
+                await audio.play();
+            } catch (error) {
+                console.error("failed to play the audio file ", error);
+            }
+        } else {
+            audio.pause();
+        }
+    };
+
+    const updateMusicState = (num, autoplay = false) => {
         setCurrentSongIndex(num);
-        setCurrentFileName(osts[currentSongIndex].fileName)
-        setCurrentFilePath(osts[currentSongIndex].filePath)
-        setIsPlaying(false)
-    }
+        setCurrentFileName(osts[num].fileName)
+        setCurrentFilePath(osts[num].filePath)
+        setShouldAutoplay(autoplay);
+    };
 
     const playPrevSong = () => {
         if (currentSongIndex != 0) {
@@ -99,7 +105,8 @@ const MusicPlayer = () => {
         } else {
             updateMusicState(osts.length - 1);
         }
-    }
+    };
+
 
     const playNextSong = () => {
         if (currentSongIndex != (osts.length - 1)) {
@@ -108,14 +115,39 @@ const MusicPlayer = () => {
             updateMusicState(0);
         }
     };
+
+    const playThisSong = (num) => {
+        updateMusicState(num, true);
+    };
+
+    const [shouldAutoPlay, setShouldAutoPlay] = useState(false);
+
+    useEffect(() => {
+
+        const audio = audioTagRef.current;
+
+        if (!audio) return;
+        audio.load();
+
+        if (shouldAutoPlay) {
+            audio.play()
+                .catch(error => {
+                    console.error("failed to play the audio file", error);
+                })
+                .finally(error => {
+                    shouldAutoPlay(false);
+                })
+
+        }
+    }, [currentFilePath, shouldAutoPlay]);
+
     return (
         <div className='my-5'>
             <h1 className='text-2xl'>* a silly little music player</h1>
             <br />
-            <h2 className='tracking-wider'>never heard of undertale before ? i bet you did <br /> but just don't know it was undertale.</h2>
+            <h2 className='tracking-wider'>never heard of undertale before?? i bet you did <br /> but just don't know it was undertale.</h2>
 
             <br />
-
 
             <div className='border-8 w-full h-70 flex'>
 
@@ -131,7 +163,9 @@ const MusicPlayer = () => {
                         onEnded={() => setIsPlaying(false)}
                         onPause={() => setIsPlaying(false)}
                         onPlay={() => setIsPlaying(true)}
-                        ref={audioTagRef} src={currentFilePath}></audio>
+                        ref={audioTagRef}
+                        src={currentFilePath}
+                    ></audio>
 
                     <div className='flex items-center justify-between  xl:text-2xl '>
                         <h1 onClick={playPrevSong} className='cursor-pointer text-cyan-400'>[ PREV ] </h1>
@@ -141,7 +175,14 @@ const MusicPlayer = () => {
                 </div>
 
                 <div className='border-l-8 w-1/2 h-full p-5'>
+                    <ul className='h-full flex flex-col gap-2 overflow-auto scrollbar-thumb-red-600 scrollbar-auto flex-nowrap'>
 
+                        {
+                            osts.map((ost, idx) => (
+                                <li key={idx} onClick={() => playThisSong(idx)} className='text-2xl cursor-pointer '>* {ost.fileName}</li>
+                            ))
+                        }
+                    </ul>
                 </div>
             </div>
 
