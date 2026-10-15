@@ -68,11 +68,9 @@ const MusicPlayer = () => {
         }
     ];
 
-    const [currentSongIndex, ChangeCurrentSongIndex] = useState(Math.floor(Math.random() * osts.length));
-    const [currentFileName, changeCurrentFileName] = useState(osts[currentSongIndex].fileName);
-    const [currentFilePath, changeCurrentFilePath] = useState(osts[currentSongIndex].filePath);
-
-
+    const [currentSongIndex, setCurrentSongIndex] = useState(Math.floor(Math.random() * osts.length));
+    const [currentFileName, setCurrentFileName] = useState(osts[currentSongIndex].fileName);
+    const [currentFilePath, setCurrentFilePath] = useState(osts[currentSongIndex].filePath);
 
     const audioTagRef = useRef();
     const playPauseBtn = useRef();
@@ -88,19 +86,26 @@ const MusicPlayer = () => {
         setIsPlaying(!isPlaying);
     }
 
+    const updateMusicState = (num) => {
+        setCurrentSongIndex(num);
+        setCurrentFileName(osts[currentSongIndex].fileName)
+        setCurrentFilePath(osts[currentSongIndex].filePath)
+        setIsPlaying(false)
+    }
+
+    const playPrevSong = () => {
+        if (currentSongIndex != 0) {
+            updateMusicState(currentSongIndex - 1);
+        } else {
+            updateMusicState(osts.length - 1);
+        }
+    }
 
     const playNextSong = () => {
         if (currentSongIndex != (osts.length - 1)) {
-            ChangeCurrentSongIndex(currentSongIndex + 1);
-            changeCurrentFileName(osts[currentSongIndex].fileName)
-            changeCurrentFilePath(osts[currentSongIndex].filePath)
-            setIsPlaying(false)
-
+            updateMusicState(currentSongIndex + 1);
         } else {
-            ChangeCurrentSongIndex(0);
-            changeCurrentFileName(osts[currentSongIndex].fileName)
-            changeCurrentFilePath(osts[currentSongIndex].filePath)
-            setIsPlaying(false)
+            updateMusicState(0);
         }
     };
     return (
@@ -122,10 +127,14 @@ const MusicPlayer = () => {
 
                     </div>
 
-                    <audio ref={audioTagRef} src={currentFilePath}></audio>
+                    <audio
+                        onEnded={() => setIsPlaying(false)}
+                        onPause={() => setIsPlaying(false)}
+                        onPlay={() => setIsPlaying(true)}
+                        ref={audioTagRef} src={currentFilePath}></audio>
 
                     <div className='flex items-center justify-between  xl:text-2xl '>
-                        <h1 className='cursor-pointer text-cyan-400'>[ PREV ] </h1>
+                        <h1 onClick={playPrevSong} className='cursor-pointer text-cyan-400'>[ PREV ] </h1>
                         <h1 onClick={PlayPauseMusic} ref={playPauseBtn} className='cursor-pointer text-red-600'>{isPlaying ? "[ PAUSE ]" : "[ PLAY ]"} </h1>
                         <h1 onClick={playNextSong} className='cursor-pointer text-blue-600'>[ NEXT ] </h1>
                     </div>
