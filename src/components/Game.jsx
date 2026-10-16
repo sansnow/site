@@ -249,6 +249,9 @@ const Game = () => {
             <span>RESET</span>
           </button>
         </div>
+        <h1 className="my-2">i almost forgot. the controls are </h1>
+        <h1 className="my-2">P1: w/s for up and down</h1>
+        <h1 className="my-2">P2: upArrow/DownArrow for up and down</h1>
       </div>
     </div>
   );

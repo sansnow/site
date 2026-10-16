@@ -1,16 +1,50 @@
-# React + Vite
+# Undertale Themed Portfolio Website!!! 
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
 
-Currently, two official plugins are available:
+A portfolio website with the styling being inspired from the [Undertale](https://undertale.com/) game (my fav game). it includes a music player, a ping pong game and a home page where ascii art and dialogues changes on every reload. 
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- [Live Link](https://site-five-green-1v7yzuxfcx.vercel.app/)
 
-## React Compiler
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+# Screenshots :-
+Home Page 
+![home page](/public/screenshots/homepage.png)
 
-## Expanding the Oxlint configuration
+Music Player
+![music player](/public/screenshots/musicplayer.png)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+Ping Pong Game
+![ping pong](/public/screenshots/pingpong.png)
+
+# Features
+
+- Changing ASCII Art and dialgoues according to the art selected on every site reload.
+- A music player with previous, next, play/pause features with a playlist viewer on the side
+- A simple Ping Pong game with a score board, reset and play/stop buttons.
+- Responsive site accross mobile and laptop screens.
+- a blogging system with a template blog.
+
+## HOW THIS WAS MADE
+This site was made using react js and tailwindcss mainly. i used some art of undertale game from the internet.
+
+## heres how to run the project :)
+
+1. Clone the source code to your device
+```sh
+git clone git@github.com:sansnow/site.git
+```
+
+2. cd into it and install the project's dependencies
+```sh
+cd site 
+npm install
+```
+
+3. Start the development server on `localhost:4321`
+```sh
+npm run dev
+```
+and be joyous!
+
+## AI DISCLOSURE
+ai was used for debugging react js related state management bugs while making ONLY the ping pong game. more than 80% of the code and features were writtend and developed by my own creativity and efforts.

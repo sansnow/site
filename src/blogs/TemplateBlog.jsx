@@ -73,7 +73,7 @@ const TemplateBlog = () => {
 
         <br />
 
-        <p className="tracking-wide leading-72">
+        <p className="tracking-wide leading-7">
 
             
           a very normal paragraph to test out the styling on how my usual yappy
