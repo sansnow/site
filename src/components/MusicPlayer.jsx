@@ -97,7 +97,7 @@ const MusicPlayer = () => {
         setCurrentSongIndex(num);
         setCurrentFileName(osts[num].fileName)
         setCurrentFilePath(osts[num].filePath)
-        setShouldAutoplay(autoplay);
+        setShouldAutoPlay(autoplay);
     };
 
     const playPrevSong = () => {
@@ -136,7 +136,7 @@ const MusicPlayer = () => {
                     console.error("failed to play the audio file", error);
                 })
                 .finally(error => {
-                    shouldAutoPlay(false);
+                    setShouldAutoPlay(false);
                 })
 
         }
@@ -150,9 +150,9 @@ const MusicPlayer = () => {
 
             <br />
 
-            <div className='border-8 w-full h-70 flex'>
+            <div className='border-8 w-full h-[80vh] lg:h-70 flex flex-col lg:flex-row'>
 
-                <div className='w-1/2 h-full p-5 flex flex-col justify-between'>
+                <div className='w-full lg:w-1/2 h-1/2 lg:h-full  p-5 flex flex-col justify-between'>
                     <div>
                         <h1 className='text-xl'>Currently Playing - </h1>
                         <br />
@@ -168,19 +168,18 @@ const MusicPlayer = () => {
                         src={currentFilePath}
                     ></audio>
 
-                    <div className='flex items-center justify-between  xl:text-2xl '>
+                    <div className='flex flex-col sm:flex-row items-center justify-between text-xl xl:text-2xl '>
                         <h1 onClick={playPrevSong} className='cursor-pointer text-cyan-400'>[ PREV ] </h1>
                         <h1 onClick={PlayPauseMusic} ref={playPauseBtn} className='cursor-pointer text-red-600'>{isPlaying ? "[ PAUSE ]" : "[ PLAY ]"} </h1>
                         <h1 onClick={playNextSong} className='cursor-pointer text-blue-600'>[ NEXT ] </h1>
                     </div>
                 </div>
 
-                <div className='border-l-8 w-1/2 h-full p-5'>
-                    <ul className='h-full flex flex-col gap-2 overflow-auto scrollbar-thumb-red-600 scrollbar-auto flex-nowrap'>
-
+                <div className='border-8 lg:border-l-8 w-full lg:w-1/2 h-1/2 lg:h-full p-5'>
+                    <ul className='h-full  flex flex-col gap-2 overflow-auto scrollbar-thumb-red-600 scrollbar-auto flex-nowrap'>
                         {
                             osts.map((ost, idx) => (
-                                <li key={idx} onClick={() => playThisSong(idx)} className={mergestring('text-2xl cursor-pointer ', ost.fileName == currentFileName ? "bg-red-700" : "")}>* {ost.fileName}</li>
+                                <li key={idx} onClick={() => playThisSong(idx)} className={mergestring('text-md md:text-2xl  cursor-pointer ', ost.fileName == currentFileName ? "bg-red-700" : "")}>* {ost.fileName}</li>
                             ))
                         }
                     </ul>

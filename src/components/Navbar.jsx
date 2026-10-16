@@ -3,12 +3,12 @@ import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
-    <nav className="text-2xl flex items-center justify-between">
+    <nav className="text-lg lg:text-2xl flex items-center justify-between">
       <h1 className="">
         <Link to="/">sansnow</Link>
       </h1>
 
-      <ul className="flex gap-4 items-center ">
+      <ul className="md:flex gap-4 items-center ">
         <li>
           <Link to="/blog" className="text-cyan-400">
             [ BLOG ]

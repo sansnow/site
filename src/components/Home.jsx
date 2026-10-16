@@ -112,13 +112,13 @@ const Home = () => {
   const mergestring = (s1, s2) => s1 + " " + s2;
 
   return (
-    <div className="min-h-[60vh] w-full relative flex items-center">
+    <div className="min-h-[60vh] w-full relative flex items-center flex-col lg:flex-row ">
       <div className="max-w-1/2 md:w-1/2 h-full flex items-center">
         <div className="h-full w-full flex flex-col items-center ">
           <pre className="w-fit opacity-80 ">{selected_ascii_obj.ascii}</pre>
           <div
             className={mergestring(
-              "border-8 bg-black h-fit p-3 text-xl w-full",
+              "border-8 bg-black h-fit p-3 text-md lg:text-xl w-full ",
               "",
             )}
           >
