@@ -21,6 +21,11 @@ const Navbar = () => {
                         [ ABOUT ]
                     </Link>
                 </li>
+                  <li>
+                    <Link to="/game" className="text-pink-500">
+                        [ GAME ]
+                    </Link>
+                </li>
             </ul>
         </nav>
     );
